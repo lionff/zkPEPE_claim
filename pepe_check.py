@@ -36,6 +36,10 @@ for wallet_number, private in numbered_keys:
         headers=headers,
     )
 
+    if not isinstance(json.loads(amount_check.text), list):        
+        print('Тут походу без дропа')
+        continue
+
     proof_check = requests.get(
         f'https://www.zksyncpepe.com/resources/proofs/{address.lower()}.json',
         headers=headers,
