@@ -21,7 +21,7 @@ headers = {
     'sec-ch-ua-platform': '"Windows"',
 }
 
-with open("wallets_with_drop.txt", "r") as f:
+with open("privates_with_drop.txt", "r") as f:
     keys_list = [row.strip() for row in f if row.strip()]
     numbered_keys = list(enumerate(keys_list, start=1))
     random.shuffle(numbered_keys)
