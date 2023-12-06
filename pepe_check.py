@@ -44,6 +44,7 @@ for wallet_number, private in numbered_keys:
         print(f'{address}: You are not eligible')
         with open('not_eligible_wallets.txt', 'a') as output:
             print(f'{address}', file=output)
+        time.sleep(2)    
         continue
 
 
