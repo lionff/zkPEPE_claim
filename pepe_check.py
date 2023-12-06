@@ -38,7 +38,7 @@ for wallet_number, private in numbered_keys:
 
     try:
         if isinstance(json.loads(amount_check.text), list):
-            pass
+            print(f'{address}: AirDrop - {amount_check.json()[0]}')
 
     except:
         print(f'{address}: You are not eligible')
