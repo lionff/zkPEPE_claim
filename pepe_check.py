@@ -21,7 +21,7 @@ headers = {
     'sec-ch-ua-platform': '"Windows"',
 }
 
-with open("../privates.txt", "r") as f:
+with open("wallets_with_drop.txt", "r") as f:
     keys_list = [row.strip() for row in f if row.strip()]
     numbered_keys = list(enumerate(keys_list, start=1))
     random.shuffle(numbered_keys)
@@ -45,7 +45,7 @@ for wallet_number, private in numbered_keys:
         with open('not_eligible_wallets.txt', 'a') as output:
             print(f'{address}', file=output)
         continue
-    
+
 
     proof_check = requests.get(
         f'https://www.zksyncpepe.com/resources/proofs/{address.lower()}.json',
@@ -54,11 +54,6 @@ for wallet_number, private in numbered_keys:
 
     amount = w3.to_wei(amount_check.json()[0], 'ether')
     proof = proof_check.json()
-
-    print(amount)
-    print(proof)
-
-    time.sleep(100)
 
     tx = {
         "chainId": w3.eth.chain_id,
@@ -86,3 +81,5 @@ for wallet_number, private in numbered_keys:
             print(f'{address}', file=output)
 
         print(err)
+
+    time.sleep(2)
